@@ -1,0 +1,53 @@
+//Lista simple
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+
+struct Lista {
+ int dato;
+ struct Lista* sig; //Apunta a Siguiente 	
+};
+
+void mostrar(struct Lista *lista)
+{
+	while (lista != NULL){
+		printf("%d -> ", lista->dato);
+		lista=lista->sig;
+	}
+	printf("\n");
+}
+struct Lista* 
+insertar (struct Lista *lista, int dato)
+{
+	struct Lista *nuevo = NULL;
+	nuevo = (struct Lista *) malloc (sizeof (struct Lista));
+	if (nuevo == NULL) {
+		return NULL;
+	}
+	nuevo->dato= dato;
+	nuevo->sig= lista;
+	
+	return nuevo;
+}
+
+
+
+int main(void){
+struct Lista *lista;	
+
+  lista = insertar (lista, 5); //Inserte dato 5
+  lista = insertar (lista, 10);
+  lista = insertar (lista, 100);
+  lista = insertar (lista, 50);
+  lista = insertar (lista, 13);
+  lista = insertar (lista, 1);
+  lista = insertar (lista, 999999);
+  lista = insertar (lista, 10000);
+  lista = insertar (lista, 505);
+  mostrar(lista);
+ 	
+return 0;	
+}
+
+
