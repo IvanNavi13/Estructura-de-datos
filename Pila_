@@ -1,0 +1,54 @@
+// Pila
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+
+struct Pila
+{
+  int dato; 
+  struct Pila *sig; //apunta a Siguiente 
+};
+
+struct Pila *Push (struct Pila *pila, int dato);
+struct Pila *Pop (struct Pila *pila);
+
+int main (void)
+{
+  struct Pila *pila = NULL;
+  int max, num;
+  scanf ("%d", &max);
+  for (int i = 0; i < max; ++i)
+    {
+      scanf ("%d", &num);
+      pila = Push (pila, num);
+    }
+  printf ("\n\n");
+  for (int i = 0; i < max; ++i)
+    {
+      pila = Pop (pila);
+    }
+  printf ("\n");
+  
+  return 0;
+} 
+
+struct Pila *
+Push (struct Pila *pila, int dato)
+{
+  struct Pila *nuevo = NULL;
+  nuevo = (struct Pila *) malloc (sizeof (struct Pila));
+  nuevo->dato = dato;
+  nuevo->sig = pila;
+  return nuevo;
+}
+
+struct Pila * 
+Pop (struct Pila *pila)
+{
+  struct Pila *aux = pila;
+  printf ("%d ", aux->dato);
+  pila = pila->sig;
+  free (aux);
+  return pila;
+}
+
