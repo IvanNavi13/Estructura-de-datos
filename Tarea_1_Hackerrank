@@ -1,0 +1,23 @@
+SinglyLinkedListNode *nuevoNodo, *aux; 
+
+nuevoNodo = (SinglyLinkedListNode*)malloc(sizeof (SinglyLinkedListNode)); 
+
+nuevoNodo->data = data;
+
+nuevoNodo->next = NULL;
+
+if(head == NULL)
+
+{ head = nuevoNodo;
+
+}else
+
+{ aux = head;
+
+while(aux->next !=NULL)
+
+{ aux = aux->next;
+
+} aux->next = nuevoNodo;
+
+} return head;
