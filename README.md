@@ -1,7 +1,7 @@
-## Estructura-de-datos
+## Estructura-de-datos**
 
 
-1CM10
+1CM10**
 Garcia Garcia Cano Ivan 
 
 Tareas y practicas de Estructura de Datos
