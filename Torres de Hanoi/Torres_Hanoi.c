@@ -5,6 +5,7 @@ int
 main (void)
 {
   int max;
+  printf("Ingresa el numero de discos ");
   scanf ("%d", &max);
   TorreHanoi (max, 'A', 'B', 'C');
   printf ("\n");
