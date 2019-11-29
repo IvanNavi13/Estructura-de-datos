@@ -1,11 +1,10 @@
 #include "Pila.h"
 #include <stdio.h>
-int
-main (void)
+int main (void)
 {
   struct Pila *pila = NULL;
   int max, num;
-  printf ("Ingresa el numero de datos: ");
+  printf("Ingresa el numero de datos: ");
   scanf ("%d", &max);
   for (int i = 0; i < max; ++i)
     {
@@ -18,6 +17,7 @@ main (void)
       pila = Pop (pila);
     }
   printf ("\n");
-
+  
   return 0;
-}
+} 
+

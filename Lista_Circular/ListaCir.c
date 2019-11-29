@@ -117,6 +117,3 @@ eliminarCabeza (struct Lista *lista)
   free (aux);
   return lista;
 }
-
-
-

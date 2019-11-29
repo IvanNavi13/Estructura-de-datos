@@ -1,39 +1,9 @@
 /* Listas Doblemente Ligadas */
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-
-struct Lista{
-  int dato;
-  struct Lista *siguiente;
-  struct Lista *anterior;
-};
-
-struct Lista *agregarElemento (struct Lista *, int);
-void mostrarLista (struct Lista *);	
-void mostrarInversa (struct Lista *);	
-struct Lista *eliminarCola (struct Lista *);
-struct Lista *eliminarCabeza (struct Lista *);
+#include "Doble.h"
 
 
-int
-main (void)
-{
-  struct Lista *lista1 = NULL;
-  int max, numero;
-  //Ingresa el numero total de nodos en la lista
-  scanf ("%d", &max);
-  for (int i = 0; i < max; i++)
-    {
-      scanf ("%d", &numero);
-      lista1 = agregarElemento (lista1, numero);
-    }
-    
-  mostrarLista (lista1);
-  printf ("\n\n");
-  mostrarInversa (lista1);
-  printf ("\n\n");
-   return 0;
-}
 
 struct Lista *
 agregarElemento (struct Lista *lista, int dato)

@@ -1,40 +1,7 @@
-// Listas Circulares
+/* Lista Doble Circular */
 #include<stdio.h>
 #include <stdlib.h>
-
-struct Lista
-{
-  int dato;
-  struct Lista *siguiente;  //Apunta a siguiente 
-};
-
-struct Lista *agregarElemento (struct Lista *, int);
-void mostrarLista (struct Lista *);
-void mostrarInversa (struct Lista *);
-struct Lista *eliminarCola (struct Lista *);
-struct Lista *eliminarCabeza (struct Lista *);
-
-
-int
-main (void)
-{
-  struct Lista *lista1 = NULL;
-  int max, numero;
-  //Ingresa el numero total de nodos en la lista
-
-  scanf ("%d", &max);
-  for (int i = 0; i < max; i++)
-    {
-      scanf ("%d", &numero);
-      lista1 = agregarElemento (lista1, numero);
-    }
-
-  mostrarLista (lista1);
-  printf ("\n");
-  mostrarInversa (lista1);
-  printf ("\n\n");
-  return 0;
-}
+#include "DobleCir.h"
 
 struct Lista *
 agregarElemento (struct Lista *lista, int dato)
@@ -46,10 +13,12 @@ agregarElemento (struct Lista *lista, int dato)
   nuevo = (struct Lista *) malloc (sizeof (struct Lista));
   nuevo->dato = dato;
   nuevo->siguiente = NULL;
+  nuevo->anterior = NULL;
   if (lista == NULL)
     {
       lista = nuevo;
       lista->siguiente = lista;
+      lista->anterior = lista;
     }
   else
     {
@@ -59,8 +28,11 @@ agregarElemento (struct Lista *lista, int dato)
 	{
 	  fin = fin->siguiente;
 	}
+
       fin->siguiente = nuevo;
+      lista->anterior = nuevo;
       nuevo->siguiente = lista;
+      nuevo->anterior = fin;
     }
   return lista;
 }
@@ -88,27 +60,20 @@ void
 mostrarInversa (struct Lista *lista)
 {
   struct Lista *aux;
-  struct Lista *fin;
-  fin = lista;
-  fin = fin->siguiente;
-  while (fin->siguiente != lista)
+  aux = lista;
+  if (aux == NULL)
     {
-      fin = fin->siguiente;
+      printf ("La lista esta vacia...\n");
+      return;
     }
-  //Fin ya esta en el final de la lista
-  printf ("%d ", fin->dato);
-  while (fin != lista)
+  aux = aux->anterior;
+  while (aux != lista)
     {
-      aux = lista;
-      while (aux->siguiente != fin)
-	{
-	  aux = aux->siguiente;
-	}
-      fin = aux;
       printf ("%d ", aux->dato);
+      aux = aux->anterior;
     }
+  printf ("%d ", aux->dato);
 }
-
 
 struct Lista *
 eliminarCola (struct Lista *lista)
@@ -122,13 +87,9 @@ eliminarCola (struct Lista *lista)
       fin = fin->siguiente;
     }
   //Fin ya esta en el final de la lista
-  aux = lista;
-  while (aux->siguiente != fin)
-    {
-      aux = aux->siguiente;
-    }
-  //Aux esta una antes del final
+  aux = fin->anterior;
   aux->siguiente = lista;
+  lista->anterior = aux;
   free (fin);
   return lista;
 }
@@ -144,8 +105,10 @@ eliminarCabeza (struct Lista *lista)
     {
       fin = fin->siguiente;
     }
+  //Llegamos el final de la lista
   aux = lista;
   lista = lista->siguiente;
+  lista->anterior = fin;
   fin->siguiente = lista;
   free (aux);
   return lista;

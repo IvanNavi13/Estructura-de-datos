@@ -13,7 +13,7 @@ Push (struct Pila *pila, int dato)
   return nuevo;
 }
 
-struct Pila *
+struct Pila * 
 Pop (struct Pila *pila)
 {
   struct Pila *aux = pila;
@@ -22,3 +22,4 @@ Pop (struct Pila *pila)
   free (aux);
   return pila;
 }
+

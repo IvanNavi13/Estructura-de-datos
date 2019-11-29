@@ -1,11 +1,12 @@
 #include "DobleCir.h"
 #include <stdio.h>
-int main (void)
+int
+main (void)
 {
   struct Lista *lista1 = NULL;
   int max, numero;
   //Ingresa el numero total de nodos en la lista
-  printf("Ingresa el numero de datos: ");
+  printf ("Ingresa el numero de datos: ");
   scanf ("%d", &max);
   for (int i = 0; i < max; i++)
     {
@@ -18,5 +19,3 @@ int main (void)
   printf ("\n");
   return 0;
 }
-
-
